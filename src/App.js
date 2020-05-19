@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <div>
         <SelectionArea handleAddFast={this.handleAddFast} />
-        <Timer fastTime={16 * 60 * 60 - 61} />
+        <Timer totalFastTime={16 * 60 * 60 - 61} />
       </div>
     );
   }
