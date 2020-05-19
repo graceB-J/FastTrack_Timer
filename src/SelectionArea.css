@@ -9,6 +9,16 @@
 
 }
 
+.CustomRatio {
+    text-align: center;
+    margin: 0;
+    color: green;
+    font-size: 40px;
+    font-family: 'Avenir';
+    font-weight: bold;
+    width: fit-content;
+}
+
 .InfoStyle {
     text-align: left;
     margin: 10px;

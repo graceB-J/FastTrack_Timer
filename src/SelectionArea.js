@@ -10,6 +10,8 @@ class SelectionArea extends React.Component {
         };
     }
 
+
+
     render() {
         return (
             <div className="SelectionAreaBox">
@@ -19,13 +21,15 @@ class SelectionArea extends React.Component {
                 Three methods of intermittent fasting are alternate-day fasting,
                     periodic fasting, and daily time-restricted feeding.</p>
                 <p>Please Select Your Fasting to Eating Ratio or enter the number of hours and minutes you'd like to fast on the right. </p>
-                <div className="buttonDisplay">
+                <div className="FastRatio">
                     <button className="FastRatio" onClick={() => this.props.handleAddFast(16)}> 16:8 </button>
                     <button className="FastRatio" onClick={() => this.props.handleAddFast(18)}> 18:6 </button>
-                    <input type="number" id="hours" name="hours" maxLength="2" max="23" min="0" />
-                    <input type="number" id="minutes" name="minutes" maxLength="2" max="59" min="0" />
-                    <button className="Submit" onClick={() => this.props.handleAddFast(((document.getElementById("minutes").value / 60.0) +
-                        parseInt(document.getElementById("hours").value)))}> Submit Custom </button>
+                    <div className="CustomRatio">
+                        <input type="number" id="hours" name="hours" required minLength="1" required maxLength="2" required max="23" min="0" placeholder="Hr" />
+                        <input type="number" id="minutes" name="minutes" required minLength="1" required maxLength="2" required max="59" min="0" placeholder="Min" />
+                        <button className="Submit" onClick={() => this.props.handleAddFast(((parseInt(document.getElementById("minutes").value) / 60.0) +
+                            parseInt(document.getElementById("hours").value)))}> Submit Custom </button>
+                    </div>
                 </div>
             </div>
         );
