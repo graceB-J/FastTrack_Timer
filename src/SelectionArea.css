@@ -1,0 +1,31 @@
+.FastRatio {
+    text-align: center;
+    margin: 0;
+    color: green;
+    font-size: 40px;
+    font-family: 'Avenir';
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.InfoStyle {
+    text-align: left;
+    margin: 10px;
+    color: black;
+}
+
+.SelectionAreaBox {
+    height: fit-content;
+    width: 50%;
+    border: 5px rgb(0, 0, 0) solid;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 35rem;
+    margin: 10px;
+    
+  }
+
+.buttonDisplay {
+    text-align: center;
+}
