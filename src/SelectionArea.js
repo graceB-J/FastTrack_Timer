@@ -25,10 +25,9 @@ class SelectionArea extends React.Component {
                     <button className="FastRatio" onClick={() => this.props.handleAddFast(16)}> 16:8 </button>
                     <button className="FastRatio" onClick={() => this.props.handleAddFast(18)}> 18:6 </button>
                     <div className="CustomRatio">
-                        <input type="number" id="hours" name="hours" required minLength="1" required maxLength="2" required max="23" min="0" placeholder="Hr" />
-                        <input type="number" id="minutes" name="minutes" required minLength="1" required maxLength="2" required max="59" min="0" placeholder="Min" />
-                        <button className="Submit" onClick={() => this.props.handleAddFast(((parseInt(document.getElementById("minutes").value) / 60.0) +
-                            parseInt(document.getElementById("hours").value)))}> Submit Custom </button>
+                        <input type="number" id="hours" name="hours" required minLength="1" required maxLength="2" required max="23" min="0" placeholder="Hr" defaultValue="0" />
+                        <input type="number" id="minutes" name="minutes" required minLength="1" required maxLength="2" required max="59" min="0" placeholder="Min" defaultValue="0" />
+                        <button className="Submit" onClick={() => this.props.handleAddFast(parseInt(document.getElementById("minutes").value) / 60.0 + parseInt(document.getElementById("hours").value))}> Submit Custom </button>
                     </div>
                 </div>
             </div>
