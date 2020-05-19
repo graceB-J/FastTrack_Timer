@@ -39,10 +39,10 @@ const Timer = ({ totalFastTime }) => {
 
 const Countdown = ({ totalFastTime, startTime }) => {
     const [timeLeft, setTimeLeft] = useState(-1);
-    window.setInterval(function(){
-        /// call your function here
-      }, 5000);
-    setTimeLeft(totalFastTime - (startTime - Date.now()));
+    // window.setInterval(function () {
+    //     /// call your function here
+    // }, 5000);
+    // setTimeLeft(totalFastTime - (startTime - Date.now()));
     return (
         <p>{Math.floor(timeLeft / (60 * 60))}:{Math.floor(timeLeft / 60 % 60)}:{Math.floor(timeLeft % 60)}</p>
     )
