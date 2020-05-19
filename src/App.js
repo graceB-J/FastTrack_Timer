@@ -13,7 +13,6 @@ class App extends React.Component {
   }
   handleAddFast = length => {
     //Tell timer the correct length based on user input
-    console.log(length);
     if (length < 0) {
       length = 0;
     } else if (length > 24) {
