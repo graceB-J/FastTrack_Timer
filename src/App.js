@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      orders: []
+      history: []
     };
   }
   handleAddFast = length => {
@@ -16,11 +16,18 @@ class App extends React.Component {
     this.state = length;
     console.log(length);
   }
+
+  // handleFinished = fastInfo => {
+  //   this.setState(prevState => {{
+  //     history: prevState.concat(fastInfo)
+  //   }})
+  // }
+
   render() {
     return (
       <div>
         <SelectionArea handleAddFast={this.handleAddFast} />
-        <Timer totalFastTime={16 * 60 * 60 - 61} />
+        <Timer totalFastTime={16 * 60 * 60} />
       </div>
     );
   }
