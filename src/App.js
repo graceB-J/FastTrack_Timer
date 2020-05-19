@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import './Button.js';
 import SelectionArea from './SelectionArea.js';
+import Timer from './Timer.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,11 +20,10 @@ class App extends React.Component {
     return (
       <div>
         <SelectionArea handleAddFast={this.handleAddFast} />
+        <Timer fastTime={16 * 60 * 60 - 61} />
       </div>
     );
   }
 }
-
-
 
 export default App;
