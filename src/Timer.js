@@ -48,6 +48,7 @@ const Timer = ({ handleFinished, totalFastTime }) => {
     setFasting(true);
   };
 
+
   return (
     <div>
       {fasting && <p>Fasting Period</p>}
@@ -87,5 +88,6 @@ const ProgressBar = ({ totalTime, timeLeft }) => {
     </div>
   );
 };
+
 
 export default Timer;
