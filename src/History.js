@@ -29,6 +29,8 @@ const History = ({ history }) => {
         );
       })}
       <p>Number of completed fasts: {history.length}</p>
+      <p>Total hours fasted:</p>
+      <p>Average fast time: </p>
     </div>
   );
 };
