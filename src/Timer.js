@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-const Timer = ({ handleFinished, totalFastTime }) => {
+import ProgressBar from "react-bootstrap/ProgressBar";
+
+const Timer = (props) => {
+  const { handleFinished, totalFastTime } = props;
   const [startDate, setStartDate] = useState(null);
   const [startTime, setStartTime] = useState(-1);
   const [timeLeft, setTimeLeft] = useState(totalFastTime);
@@ -59,12 +62,14 @@ const Timer = ({ handleFinished, totalFastTime }) => {
       {!fasting && <p>Eating Period</p>}
       <Countdown timeLeft={timeLeft} />
       <TimerButton handleStart={handleStart} handleCancel={handleCancel} />
-      <ProgressBar totalTime={totalTime} timeLeft={timeLeft} />
+      <ProgressBar now={(timeLeft / totalTime) * 100} />
+      {/* <ProgressBar totalTime={totalTime} timeLeft={timeLeft} /> */}
     </div>
   );
 };
 
-const Countdown = ({ timeLeft }) => {
+const Countdown = (props) => {
+  const { timeLeft } = props;
   return (
     <p>
       {Math.floor(timeLeft / (60 * 60))}:{Math.floor((timeLeft / 60) % 60)}:
@@ -73,7 +78,8 @@ const Countdown = ({ timeLeft }) => {
   );
 };
 
-const TimerButton = ({ handleStart, handleCancel }) => {
+const TimerButton = (props) => {
+  const { handleStart, handleCancel } = props;
   //Start + Stop/Cancel controls for timer
   return (
     <div>
@@ -81,14 +87,6 @@ const TimerButton = ({ handleStart, handleCancel }) => {
         Start
       </button>
       <button onClick={handleCancel}>Cancel</button>
-    </div>
-  );
-};
-
-const ProgressBar = ({ totalTime, timeLeft }) => {
-  return (
-    <div>
-      <p>{(timeLeft / totalTime) * 100}%</p>
     </div>
   );
 };
