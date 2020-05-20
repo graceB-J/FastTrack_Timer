@@ -26,6 +26,9 @@ const History = (props) => {
               Length of fast: {Math.floor(entry.fastLength / 3600)}:
               {(entry.fastLength / 60) % 60}
             </p>
+            <p>
+              additional comments: {entry.difficulty}
+            </p>
           </div>
         );
       })}
