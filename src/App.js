@@ -7,6 +7,8 @@ import History from "./History.js";
 import FastSurvey from "./FastSurvey.js"
 
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,11 @@ class App extends React.Component {
           startDate: new Date(),
           fastLength: 90 * 60,
         },
-      ]
+        {
+          startDate: new Date(),
+          fastLength: 3 * 60,
+        },
+      ],
     };
   }
 
