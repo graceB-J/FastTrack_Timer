@@ -32,6 +32,11 @@ const Timer = ({ handleFinished, totalFastTime }) => {
     }
   }, [startTime]);
 
+  useEffect(() => {
+    setTotalTime(totalFastTime);
+    setTimeLeft(totalFastTime);
+  }, [totalFastTime]);
+
   const handleStart = () => {
     let today = new Date();
     setStartDate(today);
@@ -47,7 +52,6 @@ const Timer = ({ handleFinished, totalFastTime }) => {
     setStartTime(-1);
     setFasting(true);
   };
-
 
   return (
     <div>
@@ -88,6 +92,5 @@ const ProgressBar = ({ totalTime, timeLeft }) => {
     </div>
   );
 };
-
 
 export default Timer;
