@@ -8,6 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      length: 0,
       history: []
     };
   }
@@ -18,8 +19,14 @@ class App extends React.Component {
     } else if (length > 24) {
       length = 24;
     }
-    this.state = length;
-    console.log(length);
+
+    this.setState(prevState => {
+      return ({
+        length: length,
+        history: prevState.history
+      })
+    })
+    console.log(this.state.length);
   }
 
   // handleFinished = fastInfo => {
@@ -32,7 +39,8 @@ class App extends React.Component {
     return (
       <div>
         <SelectionArea handleAddFast={this.handleAddFast} />
-        <Timer totalFastTime={16 * 60 * 60} />
+        <Timer
+          totalFastTime={this.state.length * 3600} />
       </div>
     );
   }

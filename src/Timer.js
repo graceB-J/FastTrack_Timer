@@ -6,12 +6,13 @@ const Timer = ({ totalFastTime }) => {
     const [fasting, setFasting] = useState(true);
     const [totalTime, setTotalTime] = useState(totalFastTime)
 
+
     useEffect(() => {
         if (startTime !== -1) {
-            setTimeLeft(totalTime - ((Date.now() / 1000) - startTime ));
+            setTimeLeft(totalTime - ((Date.now() / 1000) - startTime));
             const interval = setInterval(() => {
-                setTimeLeft(totalTime - ((Date.now() / 1000) - startTime ));
-                if (totalTime - ((Date.now() / 1000) - startTime ) < 1) {
+                setTimeLeft(totalTime - ((Date.now() / 1000) - startTime));
+                if (totalTime - ((Date.now() / 1000) - startTime) < 1) {
                     if (fasting) {
                         setFasting(false);
                         setTotalTime((24 * 60 * 60) - totalTime);
@@ -22,7 +23,7 @@ const Timer = ({ totalFastTime }) => {
                 }
             }, 500);
             return () => clearInterval(interval);
-        } else { 
+        } else {
             setTimeLeft(totalTime);
         }
     }, [startTime])
@@ -40,7 +41,7 @@ const Timer = ({ totalFastTime }) => {
         setStartTime(-1);
         setFasting(true);
     }
-    
+
 
     return (
         <div>
@@ -76,7 +77,7 @@ const TimerButton = ({ handleStart, handleCancel }) => {
 
 const ProgressBar = ({ totalTime, timeLeft }) => {
     return (
-    <div><p>{timeLeft / totalTime * 100}%</p></div>
+        <div><p>{timeLeft / totalTime * 100}%</p></div>
     )
 }
 
