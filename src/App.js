@@ -15,7 +15,7 @@ class App extends React.Component {
           startDate: new Date(),
           fastLength: 90 * 60,
         },
-      ],
+      ]
     };
   }
 
