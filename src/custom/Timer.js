@@ -4,6 +4,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 
 const Timer = (props) => {
   const { handleFinished, totalFastTime } = props;
+
   const [startDate, setStartDate] = useState(null);
   const [startTime, setStartTime] = useState(-1);
   const [timeLeft, setTimeLeft] = useState(totalFastTime);
@@ -63,7 +64,6 @@ const Timer = (props) => {
       <Countdown timeLeft={timeLeft} />
       <TimerButton handleStart={handleStart} handleCancel={handleCancel} />
       <ProgressBar now={(timeLeft / totalTime) * 100} />
-      {/* <ProgressBar totalTime={totalTime} timeLeft={timeLeft} /> */}
     </div>
   );
 };
@@ -80,7 +80,6 @@ const Countdown = (props) => {
 
 const TimerButton = (props) => {
   const { handleStart, handleCancel } = props;
-  //Start + Stop/Cancel controls for timer
   return (
     <div>
       <button id="start" onClick={handleStart}>

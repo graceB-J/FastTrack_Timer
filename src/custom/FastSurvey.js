@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.js';
+import '../Button.js';
 import { RadioGroup, Radio } from 'react-radio-group';
 import "./FastSurvey.css";
 

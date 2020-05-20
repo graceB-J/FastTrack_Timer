@@ -6,7 +6,6 @@
     font-family: 'Avenir';
     font-weight: bold;
     cursor: pointer;
-
 }
 
 .CustomRatio {
@@ -40,14 +39,14 @@
     text-align: center;
 }
 
-.tooltip {
+.tooltipcustom {
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
   }
   
   /* Tooltip text */
-  .tooltip .tooltiptext {
+  .tooltipcustom .tooltiptext {
     visibility: hidden;
     width: 100px;
     bottom: 200%;

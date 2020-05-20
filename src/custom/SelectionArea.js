@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.js';
+import '../Button.js';
 import './SelectionArea.css';
 
 class SelectionArea extends React.Component {
@@ -9,8 +9,6 @@ class SelectionArea extends React.Component {
 
         };
     }
-
-
 
     render() {
         return (
@@ -27,10 +25,9 @@ class SelectionArea extends React.Component {
                     <div className="CustomRatio">
                         <input type="number" id="hours" name="hours" required minLength="1" required maxLength="2" required max="23" min="0" placeholder="Hr" defaultValue="0" />
                         <input type="number" id="minutes" name="minutes" required minLength="1" required maxLength="2" required max="59" min="0" placeholder="Min" defaultValue="0" />
-                        <div class="tooltip">
+                        <div class="tooltipcustom">
                             <span class="tooltiptext">Please enter time in hours and minutes</span>
                             <button className="Submit" onClick={() => this.props.handleAddFast(parseInt(document.getElementById("minutes").value) / 60.0 + parseInt(document.getElementById("hours").value))}> Submit Custom </button>
-
                         </div>
                     </div>
                 </div>
