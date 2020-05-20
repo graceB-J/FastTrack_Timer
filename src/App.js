@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      length: 0,
+      length: 1,
       history: [
         {
           startDate: new Date(),
@@ -26,14 +26,14 @@ class App extends React.Component {
     } else if (length > 24) {
       length = 24;
     }
-    this.setState(prevState => {
-      return ({
+    this.setState((prevState) => {
+      return {
         length: length,
-        history: prevState.history
-      })
-    })
+        history: prevState.history,
+      };
+    });
     console.log(this.state.length);
-  }
+  };
 
   handleFinished = (fastInfo) => {
     this.setState((prevState) => {
@@ -52,7 +52,6 @@ class App extends React.Component {
           totalFastTime={this.state.length * 3600}
         />
         <History history={this.state.history} />
-
       </div>
     );
   }
