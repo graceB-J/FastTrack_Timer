@@ -1,83 +1,83 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-const Timer = ({ totalFastTime }) => {
-    const [startTime, setStartTime] = useState(-1);
-    const [timeLeft, setTimeLeft] = useState(totalFastTime);
-    const [fasting, setFasting] = useState(true);
-    const [totalTime, setTotalTime] = useState(totalFastTime)
+import ProgressBar from "react-bootstrap/ProgressBar";
 
-    useEffect(() => {
-        if (startTime !== -1) {
-            setTimeLeft(totalTime - ((Date.now() / 1000) - startTime ));
-            const interval = setInterval(() => {
-                setTimeLeft(totalTime - ((Date.now() / 1000) - startTime ));
-                if (totalTime - ((Date.now() / 1000) - startTime ) < 1) {
-                    if (fasting) {
-                        setFasting(false);
-                        setTotalTime((24 * 60 * 60) - totalTime);
-                        setStartTime(Date.now() / 1000);
-                    } else {
-                        clearInterval(interval);
-                    }
-                }
-            }, 500);
-            return () => clearInterval(interval);
-        } else { 
-            setTimeLeft(totalTime);
+import {Countdown, TimerButton} from "./TimerComponents.js";
+import "./Timer.css";
+import { ReactComponent as Chicken } from './imgs/chicken.svg';
+import { ReactComponent as NoChicken } from './imgs/nochicken.svg';
+
+const Timer = (props) => {
+  const { handleFinished, totalFastTime } = props;
+
+  const [startDate, setStartDate] = useState(null);
+  const [startTime, setStartTime] = useState(-1);
+  const [timeLeft, setTimeLeft] = useState(totalFastTime);
+  const [fasting, setFasting] = useState(true);
+  const [totalTime, setTotalTime] = useState(totalFastTime);
+
+  useEffect(() => {
+    if (startTime !== -1) {
+      setTimeLeft(totalTime - (Date.now() / 1000 - startTime));
+      const interval = setInterval(() => {
+        setTimeLeft(totalTime - (Date.now() / 1000 - startTime));
+        if (totalTime - (Date.now() / 1000 - startTime) < 1) {
+          if (fasting) {
+            handleFinished({
+              startDate: startDate,
+              fastLength: totalFastTime,
+            });
+            setFasting(false);
+            setTotalTime(24 * 60 * 60 - totalTime);
+            setStartTime(Date.now() / 1000);
+          } else {
+            clearInterval(interval);
+          }
         }
-    }, [startTime])
-
-    const handleStart = () => {
-        const start = document.getElementById("start");
-        start.disabled = true;
-        setStartTime(Date.now() / 1000);
+      }, 500);
+      return () => clearInterval(interval);
+    } else {
+      setTimeLeft(totalTime);
     }
+  }, [startTime]);
 
-    const handleCancel = () => {
-        const start = document.getElementById("start");
-        start.disabled = false;
-        setTotalTime(totalFastTime);
-        setStartTime(-1);
-        setFasting(true);
-    }
-    
+  useEffect(() => {
+    setTotalTime(totalFastTime);
+    setTimeLeft(totalFastTime);
+  }, [totalFastTime]);
 
-    return (
-        <div>
-            {fasting && <p>Fasting Period</p>}
-            {!fasting && <p>Eating Period</p>}
-            <Countdown
-                timeLeft={timeLeft} />
-            <TimerButton
-                handleStart={handleStart}
-                handleCancel={handleCancel} />
-            <ProgressBar
-                totalTime={totalTime}
-                timeLeft={timeLeft} />
-        </div>
-    )
-}
+  const handleStart = () => {
+    let today = new Date();
+    setStartDate(today);
+    const start = document.getElementById("start");
+    start.disabled = true;
+    setStartTime(Date.now() / 1000);
+  };
 
-const Countdown = ({ timeLeft }) => {
-    return (
-        <p>{Math.floor(timeLeft / (60 * 60))}:{Math.floor(timeLeft / 60 % 60)}:{Math.floor(timeLeft % 60)}</p>
-    )
-}
+  const handleCancel = () => {
+    const start = document.getElementById("start");
+    start.disabled = false;
+    setTotalTime(totalFastTime);
+    setStartTime(-1);
+    setFasting(true);
+  };
 
-const TimerButton = ({ handleStart, handleCancel }) => {
-    //Start + Stop/Cancel controls for timer
-    return (
-        <div>
-            <button id="start" onClick={handleStart}>Start</button>
-            <button onClick={handleCancel}>Cancel</button>
-        </div>
-    )
-}
+  return (
+    <div className="timerRoot">
+      {fasting && <Chicken className="fastIcon"/>}
+      {fasting && <h1>Fasting Period</h1>}
+      {!fasting && <NoChicken className="fastIcon"/>}
+      {!fasting && <h1>Eating Period</h1>}
+      <ProgressBar
+        style={{height: "60px"}}
+        className="progress"
+        now={(timeLeft / totalTime) * 100}
+        label={<Countdown timeLeft={timeLeft} />} />
+      <TimerButton
+        handleStart={handleStart}
+        handleCancel={handleCancel} />
+    </div>
+  );
+};
 
-const ProgressBar = ({ totalTime, timeLeft }) => {
-    return (
-    <div><p>{timeLeft / totalTime * 100}%</p></div>
-    )
-}
-
-export default Timer
+export default Timer;

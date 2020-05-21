@@ -1,0 +1,11 @@
+.timerRoot {
+    text-align: center;
+    padding: 50px 10px
+}
+
+.fastIcon {
+    width: 200px;
+    height: 200px;
+
+    background-color: aqua;
+}
