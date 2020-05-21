@@ -1,18 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Codystar:300&display=swap');
 
+
+
+
 .FastRatioButtons {
+    flex: on;
     text-align: center;
-    margin-right: 10px;
     padding: 5px;
+    margin:5px;
 }
 
 .CustomRatio {
+    text-align: center;
     padding: 5px;
-    width: 250px;
 }
 
 .InfoStyle {
+    background-position: center;
     color: black;
+    margin-top: 20px;
+    position: relative;
 }
 
 .SelectionAreaBox {
@@ -29,4 +36,20 @@
 
 .Instruction {
   text-align: center;
+}
+
+.Submit {
+  display:flex;
+  flex: on;
+  text-align: center;
+}
+
+.Sanic {
+  display:flex;
+  justify-content:center;
+  margin-left: 150px;
+}
+
+.Link {
+  color: blue;
 }

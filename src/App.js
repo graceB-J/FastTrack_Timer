@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./Button.js";
-import SelectionArea from "./SelectionArea.js";
 import Timer from "./Timer.js";
 import History from "./History.js";
 import FastSurvey from "./FastSurvey.js"
@@ -13,6 +11,7 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -37,22 +36,48 @@ class App extends React.Component {
           additionalComments: "Why do I do this?"
         },
       ],
+      promptSurvey: false,
     };
   }
 
+
   handleAddFast = (length) => {
-    //Tell timer the correct length based on user input
-    if (length < 0) {
-      length = 0;
-    } else if (length > 24) {
-      length = 24;
+    if (length === 16) {
+      this.setState((prevState) => {
+        return {
+          length: 16,
+          history: prevState.history,
+        };
+      });
+    } else if (length === 18) {
+      this.setState((prevState) => {
+        return {
+          length: 18,
+          history: prevState.history,
+        };
+      })
+    } else {
+
+      var minutes = parseInt(document.getElementById("minutes").value);
+      var hours = parseInt(document.getElementById("hours").value);
+      if (minutes !== minutes) {
+        minutes = 0;
+      }
+      if (hours !== hours) {
+        hours = 0;
+      }
+      if (length < 0) {
+        minutes = 0;
+      } else if (length > 24) {
+        length = 24;
+      }
+      this.setState((prevState) => {
+        return {
+          length: parseInt(hours) + (parseInt(minutes) / 60.0),
+          history: prevState.history,
+        };
+      });
     }
-    this.setState((prevState) => {
-      return {
-        length: length,
-        history: prevState.history,
-      };
-    });
   };
 
   handleFinished = (fastInfo) => {
@@ -60,6 +85,7 @@ class App extends React.Component {
       fastInfo.id = prevState.history.length
       return {
         history: prevState.history.concat(fastInfo),
+        promptSurvey: true,
       };
     });
   };
@@ -73,29 +99,25 @@ class App extends React.Component {
       prevState.history.push(item);
       return prevState;
     });
+    this.setState({ promptSurvey: false })
   }
 
   render() {
     return (
       <div>
         <Navbar bg="primary" variant="dark" sticky="top">
-          <Navbar.Brand href="#home">FastTrack</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-          <Button inline variant="outline-light">Search</Button>
+          <Navbar.Brand>FastTrack</Navbar.Brand>
+          <Button className="ml-auto" inline variant="outline-light">Account</Button>
         </Navbar>
         <Container fluid>
           <Row>
             <Col sm={5}>
-              <SelectionArea handleAddFast={this.handleAddFast} />
               <Timer
                 handleFinished={this.handleFinished}
                 totalFastTime={this.state.length * 3600}
+                handleAddFast={this.handleAddFast}
               />
-              <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />
+              {this.state.promptSurvey && <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />}
             </Col>
             <Col sm={7}>
               <History history={this.state.history} />
