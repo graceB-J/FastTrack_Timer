@@ -1,3 +1,11 @@
+.historyRoot {
+    padding: 30px 10px
+}
+
+.historyStatRoot {
+    margin-bottom: 20px;
+}
+
 .my-custom-scrollbar {
     position: relative;
     height: 200px;
@@ -9,8 +17,8 @@
 }
 
 .statCard {
-    width: 18rem;
-    margin-top: 20px;
+    width: 100%;
+    margin: 0px 10px 0 0;
 }
 
 .statBody {

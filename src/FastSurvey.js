@@ -9,7 +9,7 @@ class FastSurvey extends React.Component {
         this.state = {
             success: "true",
             difficulty: "Just Right",
-            additionalComments: ""
+            additionalComments: "",
         };
     }
 
