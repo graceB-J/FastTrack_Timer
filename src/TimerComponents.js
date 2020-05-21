@@ -45,7 +45,7 @@ const TimerButton = (props) => {
           </Popover>
         }
       >
-        <Button className="timerButton" variant="secondary">Set Time</Button>
+        <Button className="timerButton" variant="secondary">Toggle Timer Settings</Button>
       </OverlayTrigger>{' '}
     </div>
   );

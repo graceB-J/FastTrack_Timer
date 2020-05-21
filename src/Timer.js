@@ -68,11 +68,11 @@ const Timer = (props) => {
       {fasting && <h1>Fasting Period</h1>}
       {!fasting && <img src={Chicken} className="fastIcon" />}
       {!fasting && <h1>Eating Period</h1>}
+      <Countdown style={{position: "relative", zIndex: "1"}} timeLeft={timeLeft} />
       <ProgressBar
-        style={{height: "60px"}}
+        style={{height: "60px", marginTop: "-60px", position: "relative", zIndex: "-1"}}
         className="progress"
-        now={(timeLeft / totalTime) * 100}
-        label={<Countdown timeLeft={timeLeft} />} />
+        now={(timeLeft / totalTime) * 100} />
       <TimerButton
         handleStart={handleStart}
         handleCancel={handleCancel}
