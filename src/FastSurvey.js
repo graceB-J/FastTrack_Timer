@@ -41,11 +41,11 @@ class FastSurvey extends React.Component {
                                 How was your fast?
                             </Form.Label>
                             <Form.Check
-                                type="radio" label="Too Easy" name="formHorizontalRadios" id="easy" />
+                                type="radio" label="Too Easy" name="difficulty" id="easy" required />
                             <Form.Check
-                                type="radio" label="Just Right" name="formHorizontalRadios" id="perfect" />
+                                type="radio" label="Just Right" name="difficulty" id="perfect" />
                             <Form.Check
-                                type="radio" label="Too Hard" name="formHorizontalRadios" id="hard" />
+                                type="radio" label="Too Hard" name="difficulty" id="hard" />
                         </Form.Group>
 
                         <Form.Group as={Form.Row} controlId="success">
@@ -53,11 +53,11 @@ class FastSurvey extends React.Component {
                                 Did you successfully complete it?
                             </Form.Label>
                             <Form.Check
-                                type="radio" label="Yes" name="formHorizontalRadios" id="Yes" value="Yes" required />
+                                type="radio" label="Yes" name="success" id="Yes" value="Yes" required />
                             <Form.Check
-                                type="radio" label="No" name="formHorizontalRadios" id="No" value="No" />
+                                type="radio" label="No" name="success" id="No" value="No" />
                         </Form.Group>
-                        
+
                         <Form.Group controlId="comments">
                             <Form.Label>Additional Comments</Form.Label>
                             <Form.Control as="textarea" rows="2" value={this.state.additionalComments} onChange={this.handleCommentChange} name="commments" maxLength="140" placeholder="Additional Comments" required />
