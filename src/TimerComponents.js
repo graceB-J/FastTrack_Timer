@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 
+import SelectionArea from "./SelectionArea.js"
+
 import './TimerComponents.css'
 
 const Countdown = (props) => {
@@ -32,7 +34,7 @@ const TimerButton = (props) => {
           <Popover id="popover-positioned-bottom">
             <Popover.Title as="h3">Set Fast Length</Popover.Title>
             <Popover.Content>
-              <strong>Holy guacamole!</strong> Check this info.
+              <SelectionArea />
             </Popover.Content>
           </Popover>
         }
