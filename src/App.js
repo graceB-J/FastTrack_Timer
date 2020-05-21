@@ -22,18 +22,44 @@ class App extends React.Component {
     };
   }
 
+
   handleAddFast = (length) => {
-    if (length < 0) {
-      length = 0;
-    } else if (length > 24) {
-      length = 24;
+    if (length === 16) {
+      this.setState((prevState) => {
+        return {
+          length: 16,
+          history: prevState.history,
+        };
+      });
+    } else if (length === 18) {
+      this.setState((prevState) => {
+        return {
+          length: 18,
+          history: prevState.history,
+        };
+      })
+    } else {
+
+      var minutes = parseInt(document.getElementById("minutes").value);
+      var hours = parseInt(document.getElementById("hours").value);
+      if (minutes !== minutes) {
+        minutes = 0;
+      }
+      if (hours !== hours) {
+        hours = 0;
+      }
+      if (length < 0) {
+        minutes = 0;
+      } else if (length > 24) {
+        length = 24;
+      }
+      this.setState((prevState) => {
+        return {
+          length: parseInt(hours) + (parseInt(minutes) / 60.0),
+          history: prevState.history,
+        };
+      });
     }
-    this.setState((prevState) => {
-      return {
-        length: length,
-        history: prevState.history,
-      };
-    });
   };
 
   handleFinished = (fastInfo) => {
@@ -55,7 +81,7 @@ class App extends React.Component {
       prevState.history.push(item);
       return prevState;
     });
-    this.setState({promptSurvey: false})
+    this.setState({ promptSurvey: false })
   }
 
   render() {
