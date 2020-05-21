@@ -1,18 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Codystar:300&display=swap');
+
 .FastRatio {
     text-align: center;
     margin: 0;
     color: green;
-    font-size: 40px;
+    font-size: 20px;
     font-family: 'Avenir';
     font-weight: bold;
-    cursor: pointer;
 }
 
 .CustomRatio {
     text-align: center;
     margin: 0;
     color: green;
-    font-size: 40px;
+    font-size: 20px;
     font-family: 'Avenir';
     font-weight: bold;
     width: fit-content;
@@ -39,32 +40,18 @@
     text-align: center;
 }
 
-.tooltipcustom {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-  }
-  
-  /* Tooltip text */
-  .tooltipcustom .tooltiptext {
-    visibility: hidden;
-    width: 100px;
-    bottom: 200%;
-    left: 120%;
-    margin-left: -60px;
-    background-color: blue;
-    color: #fff;
-    text-align: center;
-    padding: 5px;
-    border-radius: 6px;
-    font-size: 15px;
-    transition-duration:  0.3s;
-   
-    /* Position the tooltip text - see examples below! */
-    position: relative;
-    z-index: 1;
-  }
+.Time{
+  font-size:15px;
+  text-align: center;
+  margin:0;
+  padding:0;
+  font-weight: normal;
+}
 
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  }
+.Instruction {
+  margin-top: 10px;
+  margin-bottom: 1px;
+  font-family:Georgia, Times, 'Times New Roman', serif;
+  font-size: 15px;
+  text-align: center;
+}

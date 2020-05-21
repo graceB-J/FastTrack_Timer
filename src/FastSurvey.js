@@ -1,6 +1,6 @@
 import React from 'react';
-import './Button.js';
-import { RadioGroup, Radio } from 'react-radio-group';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form'
 import "./FastSurvey.css";
 
 class FastSurvey extends React.Component {
@@ -35,41 +35,55 @@ class FastSurvey extends React.Component {
         return (
             <div className="SelectionAreaBox">
                 <div className="FastRatio">
-                    <p>How was your fast?</p>
-                    {/* <RadioGroup name="difficulty" selectedValue={this.state.selectedValue} onChange={this.handleRadioChangeD}>
-                        <Radio value="Too Easy" />Too Easy
-                            <Radio value="Just Right" />Just Right
-                            <Radio value="Too Hard" />Too Hard
-                        </RadioGroup>
-                    <p>Did you successfully complete it?</p>
-                    <RadioGroup name="success" selectedValue={this.state.selectedValue} onChange={this.handleRadioChangeS}>
-                        <Radio value="Yes" />Yes
-                            <Radio value="No" />No
-                        </RadioGroup> */}
-                    <label for="Easy">Too Easy</label>
-                    <input type="radio" name="difficulty" id="Easy" value="Easy" required></input>
-                    <label for="Perfect">Just Right</label>
-                    <input type="radio" name="difficulty" id="Perfect" value="Perfect"></input>
-                    <label for="Hard">Too Hard</label>
-                    <input type="radio" name="difficulty" id="Hard" value="Hard"></input>
+                    <Form>
+                        <Form.Group as={Form.Row} controlId="difficulty">
+                            <Form.Label as="legend" column sm={2}>
+                                How was your fast?
+                            </Form.Label>
+                            <Form.Check
+                                type="radio" label="Too Easy" name="formHorizontalRadios" id="easy" />
+                            <Form.Check
+                                type="radio" label="Just Right" name="formHorizontalRadios" id="perfect" />
+                            <Form.Check
+                                type="radio" label="Too Hard" name="formHorizontalRadios" id="hard" />
+                        </Form.Group>
 
-                    <p>Did you successfully complete it?</p>
-                    <label for="Yes">Yes</label>
-                    <input type="radio" name="success" id="Yes" value="Yes" required></input>
-                    <label for="No">No</label>
-                    <input type="radio" name="success" id="No" value="No"></input>
+                        {/* <label for="Easy">Too Easy</label>
+                        <input type="radio" name="difficulty" id="Easy" value="Easy" required></input>
+                        <label for="Perfect">Just Right</label>
+                        <input type="radio" name="difficulty" id="Perfect" value="Perfect"></input>
+                        <label for="Hard">Too Hard</label>
+                        <input type="radio" name="difficulty" id="Hard" value="Hard"></input> */}
 
-                    <div className="AdditionalComments">
-                        <input type="text" id="comments" value={this.state.additionalComments} onChange={this.handleCommentChange} name="commments" required maxLength="140" placeholder="Additional Comments" />
-                        <button className="Submit" onClick={() => this.props.handleAddSurvey(this.state)}> Submit </button>
+                        <Form.Group as={Form.Row} controlId="success">
+                            <Form.Label as="legend" column sm={2}>
+                                Did you successfully complete it?
+                            </Form.Label>
+                            <Form.Check
+                                type="radio" label="Yes" name="formHorizontalRadios" id="Yes" value="Yes" required />
+                            <Form.Check
+                                type="radio" label="No" name="formHorizontalRadios" id="No" value="No" />
+                        </Form.Group>
 
-                    </div>
+                        {/* <p>Did you successfully complete it?</p>
+                        <label for="Yes">Yes</label>
+                        <input type="radio" name="success" id="Yes" value="Yes" required></input>
+                        <label for="No">No</label>
+                        <input type="radio" name="success" id="No" value="No"></input> */}
+
+                        {/* <div className="AdditionalComments">
+                            <input type="text" id="comments" value={this.state.additionalComments} onChange={this.handleCommentChange} name="commments" required maxLength="140" placeholder="Additional Comments" />  
+                        </div> */}
+                        <Form.Group controlId="comments">
+                            <Form.Label>Additional Comments</Form.Label>
+                            <Form.Control as="textarea" rows="2" value={this.state.additionalComments} onChange={this.handleCommentChange} name="commments" required maxLength="140" placeholder="Additional Comments" />
+                        </Form.Group>
+                        <Button className="Submit" onClick={() => this.props.handleAddSurvey(this.state)}> Submit </Button>
+                    </Form>
                 </div>
             </div >
         );
     }
 }
-
-
 
 export default FastSurvey;

@@ -53,7 +53,6 @@ class App extends React.Component {
         history: prevState.history,
       };
     });
-    console.log(this.state.length);
   };
 
   handleFinished = (fastInfo) => {
