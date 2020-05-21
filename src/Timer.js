@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import ProgressBar from "react-bootstrap/ProgressBar";
 
+import {Countdown, TimerButton} from "./TimerComponents.js";
+import "./Timer.css";
+import { ReactComponent as Chicken } from './imgs/chicken.svg';
+import { ReactComponent as NoChicken } from './imgs/nochicken.svg';
+
 const Timer = (props) => {
   const { handleFinished, totalFastTime } = props;
+
   const [startDate, setStartDate] = useState(null);
   const [startTime, setStartTime] = useState(-1);
   const [timeLeft, setTimeLeft] = useState(totalFastTime);
@@ -57,36 +63,19 @@ const Timer = (props) => {
   };
 
   return (
-    <div>
-      {fasting && <p>Fasting Period</p>}
-      {!fasting && <p>Eating Period</p>}
-      <Countdown timeLeft={timeLeft} />
-      <TimerButton handleStart={handleStart} handleCancel={handleCancel} />
-      <ProgressBar now={(timeLeft / totalTime) * 100} />
-      {/* <ProgressBar totalTime={totalTime} timeLeft={timeLeft} /> */}
-    </div>
-  );
-};
-
-const Countdown = (props) => {
-  const { timeLeft } = props;
-  return (
-    <p>
-      {Math.floor(timeLeft / (60 * 60))}:{Math.floor((timeLeft / 60) % 60)}:
-      {Math.floor(timeLeft % 60)}
-    </p>
-  );
-};
-
-const TimerButton = (props) => {
-  const { handleStart, handleCancel } = props;
-  //Start + Stop/Cancel controls for timer
-  return (
-    <div>
-      <button id="start" onClick={handleStart}>
-        Start
-      </button>
-      <button onClick={handleCancel}>Cancel</button>
+    <div className="timerRoot">
+      {fasting && <Chicken className="fastIcon"/>}
+      {fasting && <h1>Fasting Period</h1>}
+      {!fasting && <NoChicken className="fastIcon"/>}
+      {!fasting && <h1>Eating Period</h1>}
+      <ProgressBar
+        style={{height: "60px"}}
+        className="progress"
+        now={(timeLeft / totalTime) * 100}
+        label={<Countdown timeLeft={timeLeft} />} />
+      <TimerButton
+        handleStart={handleStart}
+        handleCancel={handleCancel} />
     </div>
   );
 };

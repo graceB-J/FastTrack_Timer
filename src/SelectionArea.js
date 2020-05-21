@@ -11,8 +11,6 @@ class SelectionArea extends React.Component {
         };
     }
 
-
-
     render() {
         return (
             <div className="SelectionAreaBox">
@@ -35,7 +33,6 @@ class SelectionArea extends React.Component {
 
                         <div>
                             <Button className="Submit" onClick={() => this.props.handleAddFast(parseInt(document.getElementById("minutes").value) / 60.0 + parseInt(document.getElementById("hours").value))}> Submit Custom </Button>
-
                         </div>
                     </div>
                 </div>

@@ -1,13 +1,18 @@
 import React from "react";
-import "./App.css";
+
 import "./Button.js";
 import SelectionArea from "./SelectionArea.js";
 import Timer from "./Timer.js";
 import History from "./History.js";
 import FastSurvey from "./FastSurvey.js"
 
-
 import "bootstrap/dist/css/bootstrap.min.css";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,12 +21,20 @@ class App extends React.Component {
       length: 1,
       history: [
         {
+          id: 0,
           startDate: new Date(),
           fastLength: 90 * 60,
+          success: "Yes",
+          difficulty: "Too Easy",
+          additionalComments: "i want to eat food"
         },
         {
+          id: 1,
           startDate: new Date(),
           fastLength: 3 * 60,
+          success: "No",
+          difficulty: "Too Easy",
+          additionalComments: "Why do I do this?"
         },
       ],
     };
@@ -44,34 +57,51 @@ class App extends React.Component {
 
   handleFinished = (fastInfo) => {
     this.setState((prevState) => {
+      fastInfo.id = prevState.history.length
       return {
         history: prevState.history.concat(fastInfo),
       };
     });
   };
 
-  handleAddSurvey = ({ success, difficulty, AdditionalComments }) => {
+  handleAddSurvey = ({ success, difficulty, additionalComments }) => {
     this.setState((prevState) => {
       let item = prevState.history.pop();
       item.success = success;
       item.difficulty = difficulty;
-      item.AdditionalComments = AdditionalComments;
+      item.additionalComments = additionalComments;
       prevState.history.push(item);
       return prevState;
     });
   }
 
-
   render() {
     return (
       <div>
-        <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />
-        <SelectionArea handleAddFast={this.handleAddFast} />
-        <Timer
-          handleFinished={this.handleFinished}
-          totalFastTime={this.state.length * 3600}
-        />
-        <History history={this.state.history} />
+        <Navbar bg="primary" variant="dark">
+            <Navbar.Brand href="#home">FastTrack</Navbar.Brand>
+            <Nav className="mr-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#features">Features</Nav.Link>
+              <Nav.Link href="#pricing">Pricing</Nav.Link>
+            </Nav>
+            <Button inline variant="outline-light">Search</Button>
+          </Navbar>
+        <Container fluid>
+          <Row>
+            <Col sm={5}>
+              <Timer
+                handleFinished={this.handleFinished}
+                totalFastTime={this.state.length * 3600}
+              />
+              <SelectionArea handleAddFast={this.handleAddFast} />
+              <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />
+            </Col>
+            <Col sm={7}>
+              <History history={this.state.history} />
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
