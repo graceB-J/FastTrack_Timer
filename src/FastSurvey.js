@@ -76,7 +76,7 @@ class FastSurvey extends React.Component {
                         </div> */}
                         <Form.Group controlId="comments">
                             <Form.Label>Additional Comments</Form.Label>
-                            <Form.Control as="textarea" rows="2" value={this.state.additionalComments} onChange={this.handleCommentChange} name="commments" required maxLength="140" placeholder="Additional Comments" />
+                            <Form.Control as="textarea" rows="2" value={this.state.additionalComments} onChange={this.handleCommentChange} name="commments" maxLength="140" placeholder="Additional Comments" required />
                         </Form.Group>
                         <Button className="Submit" onClick={() => this.props.handleAddSurvey(this.state)}> Submit </Button>
                     </Form>

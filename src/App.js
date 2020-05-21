@@ -78,23 +78,23 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Navbar bg="primary" variant="dark">
-            <Navbar.Brand href="#home">FastTrack</Navbar.Brand>
-            <Nav className="mr-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
-            </Nav>
-            <Button inline variant="outline-light">Search</Button>
-          </Navbar>
+        <Navbar bg="primary" variant="dark" sticky="top">
+          <Navbar.Brand href="#home">FastTrack</Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          </Nav>
+          <Button inline variant="outline-light">Search</Button>
+        </Navbar>
         <Container fluid>
           <Row>
             <Col sm={5}>
+              <SelectionArea handleAddFast={this.handleAddFast} />
               <Timer
                 handleFinished={this.handleFinished}
                 totalFastTime={this.state.length * 3600}
               />
-              <SelectionArea handleAddFast={this.handleAddFast} />
               <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />
             </Col>
             <Col sm={7}>

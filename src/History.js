@@ -15,7 +15,7 @@ const History = (props) => {
     <div>
       <Container fluid>
         <Row>
-          <Col>
+          <Col sm={4}>
             <Card className="statCard">
               <Card.Body>
                 <Card.Title>Completed Fasts</Card.Title>
@@ -25,7 +25,7 @@ const History = (props) => {
               </Card.Body>
             </Card>
           </Col>
-          <Col>
+          <Col sm={4}>
             <Card className="statCard">
               <Card.Body>
                 <Card.Title>Total Hours Fasted</Card.Title>
@@ -39,7 +39,7 @@ const History = (props) => {
               </Card.Body>
             </Card>
           </Col>
-          <Col>
+          <Col sm={4}>
             <Card className="statCard">
               <Card.Body>
                 <Card.Title>Average Fast Time</Card.Title>

@@ -1,39 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Codystar:300&display=swap');
 
-.FastRatio {
+.FastRatioButtons {
     text-align: center;
-    margin: 0;
-    color: green;
-    font-size: 20px;
-    font-family: 'Avenir';
-    font-weight: bold;
+    margin-right: 10px;
+    padding: 5px;
 }
 
 .CustomRatio {
-    text-align: center;
-    margin: 0;
-    color: green;
-    font-size: 20px;
-    font-family: 'Avenir';
-    font-weight: bold;
-    width: fit-content;
+    padding: 5px;
+    width: 250px;
 }
 
 .InfoStyle {
-    text-align: left;
-    margin: 10px;
     color: black;
 }
 
 .SelectionAreaBox {
     height: fit-content;
-    width: 50%;
-    border: 5px rgb(0, 0, 0) solid;
-    border-radius: 10px;
-    text-align: left;
-    max-width: 35rem;
-    margin: 10px;
-    
   }
 
 .buttonDisplay {
@@ -41,17 +24,9 @@
 }
 
 .Time{
-  font-size:15px;
-  text-align: center;
-  margin:0;
-  padding:0;
   font-weight: normal;
 }
 
 .Instruction {
-  margin-top: 10px;
-  margin-bottom: 1px;
-  font-family:Georgia, Times, 'Times New Roman', serif;
-  font-size: 15px;
   text-align: center;
 }
