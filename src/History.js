@@ -48,10 +48,7 @@ const History = (props) => {
             <Card.Body>
               <Card.Title>Average Fast Time</Card.Title>
               <Card.Text className="statBody">
-                {Math.round(
-                  (history.reduce((prev, current) => {
-                    return prev + current.fastLength;
-                  }, 0) / 3600) / history.length * 100) / 100}
+                {isNaN(averageFastTime) ? (0) : averageFastTime}
               </Card.Text>
             </Card.Body>
           </Card>
