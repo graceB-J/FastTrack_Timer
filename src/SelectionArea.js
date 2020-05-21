@@ -17,12 +17,9 @@ class SelectionArea extends React.Component {
     render() {
         return (
             <div className="SelectionAreaBox">
-                <p className="InfoStyle">Intermittent fasting, also known as intermittent energy restriction,
-                is an umbrella term for various meal timing schedules that cycle
-                between voluntary fasting and non-fasting over a given period.
-                Three methods of intermittent fasting are alternate-day fasting,
-                periodic fasting, and daily time-restricted feeding.</p>
-                <p className="InfoStyle">Learn more about fasting <a className="Link" href="https://tenor.com/wyxa.gif">here!</a> :)</p>
+                <p className="InfoStyle">Intermittent fasting is a term for various meal timing schedules that cycle
+                between voluntary fasting and non-fasting over a given period. <br />
+                    Learn more about fasting <a className="Link" href="https://tenor.com/wyxa.gif">here!</a> :)</p>
                 <p>Please select your fasting to eating ratio or enter the number of hours and minutes you'd like to fast on the right. </p>
                 <div className="FastRatioButtons">
                     <Container>
