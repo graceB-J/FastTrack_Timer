@@ -35,6 +35,7 @@ class App extends React.Component {
           additionalComments: "Why do I do this?"
         },
       ],
+      promptSurvey: false,
     };
   }
 
@@ -57,6 +58,7 @@ class App extends React.Component {
       fastInfo.id = prevState.history.length
       return {
         history: prevState.history.concat(fastInfo),
+        promptSurvey: true,
       };
     });
   };
@@ -70,6 +72,7 @@ class App extends React.Component {
       prevState.history.push(item);
       return prevState;
     });
+    this.setState({promptSurvey: false})
   }
 
   render() {
@@ -87,7 +90,7 @@ class App extends React.Component {
                 totalFastTime={this.state.length * 3600}
                 handleAddFast={this.handleAddFast}
               />
-              <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />
+              {this.state.promptSurvey && <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />}
             </Col>
             <Col sm={7}>
               <History history={this.state.history} />

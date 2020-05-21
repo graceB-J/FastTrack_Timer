@@ -11,6 +11,11 @@ import "./History.css"
 const History = (props) => {
   const { history } = props;
 
+  let averageFastTime = Math.round(
+    (history.reduce((prev, current) => {
+      return prev + current.fastLength;
+    }, 0) / 3600) / history.length * 100) / 100
+
   return (
     <div className="historyRoot">
       <Row className="historyStatRoot">
