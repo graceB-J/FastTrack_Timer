@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Button.js';
+import './Button.js';
 import './SelectionArea.css';
 
 class SelectionArea extends React.Component {

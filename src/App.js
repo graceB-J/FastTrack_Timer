@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../Button.js";
+import "./Button.js";
 import SelectionArea from "./SelectionArea.js";
 import Timer from "./Timer.js";
 import History from "./History.js";
@@ -10,6 +10,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +21,7 @@ class App extends React.Component {
       length: 1,
       history: [
         {
+          id: 0,
           startDate: new Date(),
           fastLength: 90 * 60,
           success: "Yes",
@@ -25,6 +29,7 @@ class App extends React.Component {
           additionalComments: "i want to eat food"
         },
         {
+          id: 1,
           startDate: new Date(),
           fastLength: 3 * 60,
           success: "No",
@@ -53,6 +58,7 @@ class App extends React.Component {
 
   handleFinished = (fastInfo) => {
     this.setState((prevState) => {
+      fastInfo.id = prevState.history.length
       return {
         history: prevState.history.concat(fastInfo),
       };
@@ -70,28 +76,34 @@ class App extends React.Component {
     });
   }
 
-
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col sm={4}>
-            <SelectionArea handleAddFast={this.handleAddFast} />
-          </Col>
-          <Col sm={8}>
-            <Timer
-            handleFinished={this.handleFinished}
-            totalFastTime={this.state.length * 3600}
-            />
-            < FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={4}>
-            <History history={this.state.history} />
-          </Col>
-        </Row>
-      </Container>
+      <div>
+        <Navbar bg="primary" variant="dark">
+            <Navbar.Brand href="#home">FastTrack</Navbar.Brand>
+            <Nav className="mr-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#features">Features</Nav.Link>
+              <Nav.Link href="#pricing">Pricing</Nav.Link>
+            </Nav>
+            <Button inline variant="outline-light">Search</Button>
+          </Navbar>
+        <Container fluid>
+          <Row>
+            <Col sm={5}>
+              <Timer
+                handleFinished={this.handleFinished}
+                totalFastTime={this.state.length * 3600}
+              />
+              <SelectionArea handleAddFast={this.handleAddFast} />
+              <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />
+            </Col>
+            <Col sm={7}>
+              <History history={this.state.history} />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     );
   }
 }
