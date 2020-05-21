@@ -1,7 +1,6 @@
 import React from "react";
 
 import "./Button.js";
-import SelectionArea from "./SelectionArea.js";
 import Timer from "./Timer.js";
 import History from "./History.js";
 import FastSurvey from "./FastSurvey.js"
@@ -41,11 +40,12 @@ class App extends React.Component {
   }
 
   handleAddFast = (length) => {
-    //Tell timer the correct length based on user input
     if (length < 0) {
       length = 0;
     } else if (length > 24) {
       length = 24;
+    } else if (length = null) {
+      length = 0.1
     }
     this.setState((prevState) => {
       return {
@@ -90,10 +90,10 @@ class App extends React.Component {
         <Container fluid>
           <Row>
             <Col sm={5}>
-              <SelectionArea handleAddFast={this.handleAddFast} />
               <Timer
                 handleFinished={this.handleFinished}
                 totalFastTime={this.state.length * 3600}
+                handleAddFast={this.handleAddFast}
               />
               <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />
             </Col>

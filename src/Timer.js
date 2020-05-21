@@ -4,11 +4,11 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 
 import {Countdown, TimerButton} from "./TimerComponents.js";
 import "./Timer.css";
-import { ReactComponent as Chicken } from './imgs/chicken.svg';
-import { ReactComponent as NoChicken } from './imgs/nochicken.svg';
+import Chicken from './imgs/fried_chicken.png';
+import NoChicken from './imgs/no_chicken.png';
 
 const Timer = (props) => {
-  const { handleFinished, totalFastTime } = props;
+  const { handleFinished, totalFastTime, handleAddFast} = props;
 
   const [startDate, setStartDate] = useState(null);
   const [startTime, setStartTime] = useState(-1);
@@ -64,9 +64,9 @@ const Timer = (props) => {
 
   return (
     <div className="timerRoot">
-      {fasting && <Chicken className="fastIcon"/>}
+      {fasting && <img src={NoChicken} className="fastIcon" />}
       {fasting && <h1>Fasting Period</h1>}
-      {!fasting && <NoChicken className="fastIcon"/>}
+      {!fasting && <img src={Chicken} className="fastIcon" />}
       {!fasting && <h1>Eating Period</h1>}
       <ProgressBar
         style={{height: "60px"}}
@@ -75,7 +75,8 @@ const Timer = (props) => {
         label={<Countdown timeLeft={timeLeft} />} />
       <TimerButton
         handleStart={handleStart}
-        handleCancel={handleCancel} />
+        handleCancel={handleCancel}
+        handleAddFast={handleAddFast}/>
     </div>
   );
 };
