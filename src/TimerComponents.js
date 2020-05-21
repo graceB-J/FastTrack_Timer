@@ -9,11 +9,17 @@ import SelectionArea from "./SelectionArea.js"
 import './TimerComponents.css'
 
 const Countdown = (props) => {
+  const pad = (num, size) => {
+    var s = "000000000" + num;
+    return s.substr(s.length-size);
+  }
+
   const { timeLeft } = props;
   return (
     <h1>
-      {Math.floor(timeLeft / (60 * 60))}:{Math.floor((timeLeft / 60) % 60)}:
-      {Math.floor(timeLeft % 60)}
+      {pad(Math.floor(timeLeft / (60 * 60)), 2)}:
+      {pad(Math.floor((timeLeft / 60) % 60), 2)}:
+      {pad(Math.floor(timeLeft % 60), 2)}
     </h1>
   );
 };

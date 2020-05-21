@@ -45,7 +45,7 @@ class App extends React.Component {
     } else if (length > 24) {
       length = 24;
     } else if (length = null) {
-      length = 0.1
+      length = 0
     }
     this.setState((prevState) => {
       return {
