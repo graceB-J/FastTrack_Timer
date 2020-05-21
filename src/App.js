@@ -1,6 +1,4 @@
 import React from "react";
-
-import "./Button.js";
 import SelectionArea from "./SelectionArea.js";
 import Timer from "./Timer.js";
 import History from "./History.js";
@@ -13,6 +11,7 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+
 
 class App extends React.Component {
   constructor(props) {
