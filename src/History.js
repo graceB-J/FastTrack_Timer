@@ -1,6 +1,5 @@
 import React from "react";
 
-import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Table from "react-bootstrap/Table";
@@ -14,7 +13,8 @@ const History = (props) => {
   let averageFastTime = Math.round(
     (history.reduce((prev, current) => {
       return prev + current.fastLength;
-    }, 0) / 3600) / history.length * 100) / 100
+    }, 0) / 3600) / history.length * 100
+  ) / 100
 
   return (
     <div className="historyRoot">
@@ -71,7 +71,7 @@ const History = (props) => {
             </tr>
           </thead>
           <tbody>
-            {history.map((entry) => {
+            {history.slice(0).reverse().map((entry) => {
               return (
                 <tr>
                   <td>{entry.id + 1}</td>

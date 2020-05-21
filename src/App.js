@@ -8,7 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 
@@ -17,25 +16,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      length: 1,
-      history: [
-        {
-          id: 0,
-          startDate: new Date(),
-          fastLength: 90 * 60,
-          success: "Yes",
-          difficulty: "Too Easy",
-          additionalComments: "i want to eat food"
-        },
-        {
-          id: 1,
-          startDate: new Date(),
-          fastLength: 3 * 60,
-          success: "No",
-          difficulty: "Too Easy",
-          additionalComments: "Why do I do this?"
-        },
-      ],
+      length: 0.1 / 6 / 10 / 2,
+      history: [],
       promptSurvey: false,
     };
   }
@@ -91,6 +73,13 @@ class App extends React.Component {
                 totalFastTime={this.state.length * 3600}
                 handleAddFast={this.handleAddFast}
               />
+              {!this.state.promptSurvey && <div><p className="InfoStyle">Intermittent fasting, also known as intermittent energy restriction,
+              is an umbrella term for various meal timing schedules that cycle
+              between voluntary fasting and non-fasting over a given period.
+              Three methods of intermittent fasting are alternate-day fasting,
+              periodic fasting, and daily time-restricted feeding.</p>
+              <p className="InfoStyle">Learn more about fasting <a className="Link" href="https://tenor.com/wyxa.gif">here!</a> :)</p>
+              <p>Please select your fasting to eating ratio or enter the number of hours and minutes you'd like to fast on the right.</p></div>}
               {this.state.promptSurvey && <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />}
             </Col>
             <Col sm={7}>
