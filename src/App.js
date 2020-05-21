@@ -16,7 +16,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      length: 0.1 / 6 / 10 / 2,
+      length: 16,
       history: [],
       promptSurvey: false,
     };
