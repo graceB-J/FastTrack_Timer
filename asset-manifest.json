@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/FastTrack_Timer/static/css/main.97dcd0f5.chunk.css",
+    "main.js": "/FastTrack_Timer/static/js/main.5bf72ad7.chunk.js",
+    "main.js.map": "/FastTrack_Timer/static/js/main.5bf72ad7.chunk.js.map",
+    "runtime-main.js": "/FastTrack_Timer/static/js/runtime-main.1de2b7a6.js",
+    "runtime-main.js.map": "/FastTrack_Timer/static/js/runtime-main.1de2b7a6.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/FastTrack_Timer/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.05a57777.chunk.js": "/FastTrack_Timer/static/js/2.05a57777.chunk.js",
+    "static/js/2.05a57777.chunk.js.map": "/FastTrack_Timer/static/js/2.05a57777.chunk.js.map",
+    "index.html": "/FastTrack_Timer/index.html",
+    "precache-manifest.bb940de9170ea98e364cfde0b65f403c.js": "/FastTrack_Timer/precache-manifest.bb940de9170ea98e364cfde0b65f403c.js",
+    "service-worker.js": "/FastTrack_Timer/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/FastTrack_Timer/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.97dcd0f5.chunk.css.map": "/FastTrack_Timer/static/css/main.97dcd0f5.chunk.css.map",
+    "static/js/2.05a57777.chunk.js.LICENSE.txt": "/FastTrack_Timer/static/js/2.05a57777.chunk.js.LICENSE.txt",
+    "static/media/fried_chicken.png": "/FastTrack_Timer/static/media/fried_chicken.c396c964.png",
+    "static/media/no_chicken.png": "/FastTrack_Timer/static/media/no_chicken.06ef909e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1de2b7a6.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.05a57777.chunk.js",
+    "static/css/main.97dcd0f5.chunk.css",
+    "static/js/main.5bf72ad7.chunk.js"
+  ]
+}
