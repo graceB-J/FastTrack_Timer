@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/FastTrack_Timer/precache-manifest.bb940de9170ea98e364cfde0b65f403c.js"
+  "/FastTrack_Timer/precache-manifest.dd8d0319f976925de5911834708bb52f.js"
 );
 
 self.addEventListener('message', (event) => {
