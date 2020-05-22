@@ -24,3 +24,8 @@
 .statBody {
     font-size: 50px;
 }
+
+.units {
+    font-size: 30px;
+    color: grey;
+}

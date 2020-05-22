@@ -72,6 +72,7 @@ class App extends React.Component {
     this.surveyEnd.scrollIntoView({ behavior: "smooth" });
     this.setState((prevState) => {
       fastInfo.id = prevState.history.length
+      fastInfo.success = "Yes"
       return {
         history: prevState.history.concat(fastInfo),
         promptSurvey: true,

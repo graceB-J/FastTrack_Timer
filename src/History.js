@@ -11,10 +11,10 @@ const History = (props) => {
   const { history } = props;
 
   let averageFastTime = Math.round(
-    (history.reduce((prev, current) => {
+    (history.filter(entry => entry.success === "Yes").reduce((prev, current) => {
       return prev + current.fastLength;
-    }, 0) / 3600) / history.length * 100
-  ) / 100
+    }, 0) / 3600) / history.filter(entry => entry.success === "Yes").length * 1000
+  ) / 1000
 
   return (
     <div className="historyRoot">
@@ -24,7 +24,7 @@ const History = (props) => {
             <Card.Body>
               <Card.Title>Completed Fasts</Card.Title>
               <Card.Text className="statBody">
-                {history.length}
+                {history.filter(entry => entry.success === "Yes").length}
               </Card.Text>
             </Card.Body>
           </Card>
@@ -35,10 +35,10 @@ const History = (props) => {
               <Card.Title>Total Hours Fasted</Card.Title>
               <Card.Text className="statBody">
                 {Math.round(
-                  (history.reduce((prev, current) => {
+                  (history.filter(entry => entry.success === "Yes").reduce((prev, current) => {
                     return prev + current.fastLength;
-                  }, 0) / 3600) * 100
-                ) / 100}
+                  }, 0) / 3600) * 1000
+                ) / 1000}<span className="units"> hrs</span>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -48,7 +48,7 @@ const History = (props) => {
             <Card.Body>
               <Card.Title>Average Fast Time</Card.Title>
               <Card.Text className="statBody">
-                {isNaN(averageFastTime) ? (0) : averageFastTime}
+                {isNaN(averageFastTime) ? (0) : averageFastTime}<span className="units"> hrs</span>
               </Card.Text>
             </Card.Body>
           </Card>

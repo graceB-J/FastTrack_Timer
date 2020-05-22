@@ -41,36 +41,36 @@ class FastSurvey extends React.Component {
             <div className="SelectionAreaBox">
                 <div className="FastRatio">
                     <Form>
-                        <h3>Was the fast successful?</h3> 
+                        <h3>Was the fast successful?</h3>
                         <ToggleButtonGroup onChange={this.handleRadioChangeS}
                             type="radio" name="success" defaultValue={"Yes"}>
                             <ToggleButton
                                 type="radio" name="radio" value="Yes">
-                            Yes
+                                Yes
                             </ToggleButton>
                             <ToggleButton
                                 type="radio" name="radio" value="No">
-                            No
+                                No
                             </ToggleButton>
                         </ToggleButtonGroup>
 
-                        <h3>How was did it go?</h3> 
+                        <h3>How did it go?</h3>
                         <ToggleButtonGroup onChange={this.handleRadioChangeD}
                             type="radio" name="difficulty" defaultValue={"Just Right"}>
                             <ToggleButton
                                 type="radio" name="radio" defaultChecked value="Too Easy">
-                            Too Easy
+                                Too Easy
                             </ToggleButton>
                             <ToggleButton
                                 type="radio" name="radio" value="Just Right">
-                            Just Right
+                                Just Right
                             </ToggleButton>
                             <ToggleButton
                                 type="radio" name="radio" value="Too Hard">
-                            Too Hard
+                                Too Hard
                             </ToggleButton>
                         </ToggleButtonGroup>
-                        
+
                         <Form.Group controlId="comments">
                             <h3>Additional Comments</h3>
                             <Form.Control as="textarea" rows="2" value={this.state.additionalComments} onChange={this.handleCommentChange} name="commments" maxLength="140" placeholder="Additional Comments" required />
