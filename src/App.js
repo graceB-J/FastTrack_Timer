@@ -69,6 +69,7 @@ class App extends React.Component {
   };
 
   handleFinished = (fastInfo) => {
+    this.surveyEnd.scrollIntoView({ behavior: "smooth" });
     this.setState((prevState) => {
       fastInfo.id = prevState.history.length
       return {
@@ -113,6 +114,7 @@ class App extends React.Component {
                 <p className="InfoStyle">Learn more about fasting <a className="Link" href="https://tenor.com/wyxa.gif">here!</a> :)</p>
                 <p>Please select your fasting to eating ratio or enter the number of hours and minutes you'd like to fast on the right.</p></div>}
               {this.state.promptSurvey && <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />}
+              <div ref={(el) => { this.surveyEnd = el; }}></div>
             </Col>
             <Col sm={7}>
               <History history={this.state.history} />
