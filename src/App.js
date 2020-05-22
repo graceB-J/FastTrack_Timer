@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./Button.js";
-import SelectionArea from "./SelectionArea.js";
 import Timer from "./Timer.js";
 import History from "./History.js";
 import FastSurvey from "./FastSurvey.js"
@@ -10,49 +8,83 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      length: 1,
+      length: 16,
       history: [
         {
           id: 0,
           startDate: new Date(),
-          fastLength: 90 * 60,
+          fastLength: 16 * 60 * 60,
           success: "Yes",
-          difficulty: "Too Easy",
-          additionalComments: "i want to eat food"
+          difficulty: "Just Right",
+          additionalComments: "I hope I can keep this diet thing as a habit!"
         },
         {
           id: 1,
           startDate: new Date(),
-          fastLength: 3 * 60,
-          success: "No",
-          difficulty: "Too Easy",
-          additionalComments: "Why do I do this?"
+          fastLength: 16 * 60 * 60,
+          success: "Yes",
+          difficulty: "Just Right",
+          additionalComments: "Day 2! Feeling alright so far."
+        },
+        {
+          id: 2,
+          startDate: new Date(),
+          fastLength: 16 * 60 * 60,
+          success: "Yes",
+          difficulty: "Too Hard",
+          additionalComments: "Day 3... Harder than the other times... for some reason."
         },
       ],
+      promptSurvey: false,
     };
   }
 
+
   handleAddFast = (length) => {
-    //Tell timer the correct length based on user input
-    if (length < 0) {
-      length = 0;
-    } else if (length > 24) {
-      length = 24;
+    if (length === 16) {
+      this.setState((prevState) => {
+        return {
+          length: 16,
+          history: prevState.history,
+        };
+      });
+    } else if (length === 18) {
+      this.setState((prevState) => {
+        return {
+          length: 18,
+          history: prevState.history,
+        };
+      })
+    } else {
+
+      var minutes = parseInt(document.getElementById("minutes").value);
+      var hours = parseInt(document.getElementById("hours").value);
+      if (minutes !== minutes) {
+        minutes = 0;
+      }
+      if (hours !== hours) {
+        hours = 0;
+      }
+      if (length < 0) {
+        minutes = 0;
+      } else if (length > 24) {
+        length = 24;
+      }
+      this.setState((prevState) => {
+        return {
+          length: parseInt(hours) + (parseInt(minutes) / 60.0),
+          history: prevState.history,
+        };
+      });
     }
-    this.setState((prevState) => {
-      return {
-        length: length,
-        history: prevState.history,
-      };
-    });
   };
 
   handleFinished = (fastInfo) => {
@@ -60,6 +92,7 @@ class App extends React.Component {
       fastInfo.id = prevState.history.length
       return {
         history: prevState.history.concat(fastInfo),
+        promptSurvey: true,
       };
     });
   };
@@ -73,29 +106,32 @@ class App extends React.Component {
       prevState.history.push(item);
       return prevState;
     });
+    this.setState({ promptSurvey: false })
   }
 
   render() {
     return (
       <div>
         <Navbar bg="primary" variant="dark" sticky="top">
-          <Navbar.Brand href="#home">FastTrack</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-          <Button inline variant="outline-light">Search</Button>
+          <Navbar.Brand>FastTrack</Navbar.Brand>
+          <Button className="ml-auto" inline variant="outline-light">Account</Button>
         </Navbar>
         <Container fluid>
           <Row>
             <Col sm={5}>
-              <SelectionArea handleAddFast={this.handleAddFast} />
               <Timer
                 handleFinished={this.handleFinished}
                 totalFastTime={this.state.length * 3600}
+                handleAddFast={this.handleAddFast}
               />
-              <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />
+              {!this.state.promptSurvey && <div><p className="InfoStyle">Intermittent fasting, also known as intermittent energy restriction,
+              is an umbrella term for various meal timing schedules that cycle
+              between voluntary fasting and non-fasting over a given period.
+              Three methods of intermittent fasting are alternate-day fasting,
+              periodic fasting, and daily time-restricted feeding.</p>
+              <p className="InfoStyle">Learn more about fasting <a className="Link" href="https://tenor.com/wyxa.gif">here!</a> :)</p>
+              <p>Please select your fasting to eating ratio or enter the number of hours and minutes you'd like to fast on the right.</p></div>}
+              {this.state.promptSurvey && <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />}
             </Col>
             <Col sm={7}>
               <History history={this.state.history} />

@@ -1,11 +1,18 @@
+.SelectionAreaBox {
+    padding-bottom: 50px;
+}
+
 .AdditionalComments{
     text-align: left;
     font-size: 14px;
-
 }
 
 .Success{
     text-align: center;
     font-size: 14px;
     color: black;
+}
+
+.FastRatio h3 {
+    margin-top: 20px;
 }
