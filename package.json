@@ -20,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "FastTrack_Timer -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
-    "FastTrack_Timer": "^2.2.0"
+    "FastTrack_Timer": "^2.2.0",
+    "gh-pages": "^2.2.0"
   }
 }
