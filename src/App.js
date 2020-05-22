@@ -16,7 +16,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      length: 16,
+      length: 0,
       history: [],
       promptSurvey: false,
     };
@@ -39,23 +39,29 @@ class App extends React.Component {
         };
       })
     } else {
-
-      var minutes = parseInt(document.getElementById("minutes").value);
-      var hours = parseInt(document.getElementById("hours").value);
+      var minutes = parseFloat(document.getElementById("minutes").value);
+      var hours = parseFloat(document.getElementById("hours").value);
       if (minutes !== minutes) {
         minutes = 0;
       }
       if (hours !== hours) {
         hours = 0;
       }
-      if (length < 0) {
-        minutes = 0;
-      } else if (length > 24) {
-        length = 24;
+
+      if (hours < 0) {
+        hours = 0;
       }
+      if (minutes < 0) {
+        minutes = 0;
+      }
+
       this.setState((prevState) => {
+        let tempLength = hours + minutes / 60.0;
+        if (tempLength > 24) {
+          tempLength = 24;
+        }
         return {
-          length: parseInt(hours) + (parseInt(minutes) / 60.0),
+          length: tempLength,
           history: prevState.history,
         };
       });
@@ -105,8 +111,8 @@ class App extends React.Component {
               between voluntary fasting and non-fasting over a given period.
               Three methods of intermittent fasting are alternate-day fasting,
               periodic fasting, and daily time-restricted feeding.</p>
-              <p className="InfoStyle">Learn more about fasting <a className="Link" href="https://tenor.com/wyxa.gif">here!</a> :)</p>
-              <p>Please select your fasting to eating ratio or enter the number of hours and minutes you'd like to fast on the right.</p></div>}
+                <p className="InfoStyle">Learn more about fasting <a className="Link" href="https://tenor.com/wyxa.gif">here!</a> :)</p>
+                <p>Please select your fasting to eating ratio or enter the number of hours and minutes you'd like to fast on the right.</p></div>}
               {this.state.promptSurvey && <FastSurvey FastSurvey handleAddSurvey={this.handleAddSurvey} />}
               <div ref={(el) => { this.surveyEnd = el; }}></div>
             </Col>
